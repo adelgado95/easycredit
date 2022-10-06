@@ -1,14 +1,6 @@
 version: "3.3"
    
 services:
-  db:
-    image: postgres
-    volumes:
-      - /mnt/easycredit/data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:3000
@@ -16,9 +8,4 @@ services:
       - .:/code
     ports:
       - "3000:3000"
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    depends_on:
-      - db
+
